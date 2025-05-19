@@ -27,7 +27,9 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
-app.listen(4000, () => {
-    console.log('Servidor corriendo en el puerto 4000');
-    console.log('Documentación Swagger disponible en http://localhost:4000/api-docs');
+const PORT = process.env.PORT || 4000;
+
+app.listen(PORT, () => {
+    console.log(`✅ Servidor corriendo en puerto ${PORT}`);
+    console.log(`📘 Documentación Swagger disponible en http://localhost:${PORT}/api-docs`);
 });
