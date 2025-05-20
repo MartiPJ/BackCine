@@ -12,3 +12,18 @@ const pool = mariadb.createPool({
 });
 
 module.exports = pool;
+pool.getConnection()
+    .then(conn => {
+        console.log("✅ Conexión a la base de datos exitosa");
+        conn.release();
+    })
+    .catch(err => {
+        console.error("❌ Error de conexión a la base de datos:", err);
+    }); pool.getConnection()
+        .then(conn => {
+            console.log("✅ Conexión a la base de datos exitosa");
+            conn.release();
+        })
+        .catch(err => {
+            console.error("❌ Error de conexión a la base de datos:", err);
+        });
