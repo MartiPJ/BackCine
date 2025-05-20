@@ -27,6 +27,10 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
+app.get('/', (req, res) => {
+    res.send('✅ Backend en línea');
+});
+
 
 
 app.listen(PORT, () => {
