@@ -10,7 +10,7 @@ const app = express();
 app.use(cors()); // Permitir solicitudes desde el frontend
 app.use(express.json());
 app.use(authRoutes); // Usar rutas
-
+const PORT = process.env.PORT || 4000;
 const swaggerOptions = {
     swaggerDefinition: {
         openapi: '3.0.0',
@@ -19,7 +19,7 @@ const swaggerOptions = {
             version: '1.0.0',
             description: 'Library API Information',
         },
-        servers: [{ url: 'http://localhost:4000' }],
+        servers: [{ url: `http://localhost:${PORT}` }],
     },
     apis: ['./routes/authRoutes.js'], // Puedes mover la documentación a otro archivo luego
 };
@@ -27,7 +27,7 @@ const swaggerOptions = {
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
-const PORT = process.env.PORT || 4000;
+
 
 app.listen(PORT, () => {
     console.log(`✅ Servidor corriendo en puerto ${PORT}`);
